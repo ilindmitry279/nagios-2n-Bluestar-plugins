@@ -22,8 +22,15 @@ def zalyshok(sim):
     return zal
 
 sim = sys.argv[1]
-balance = zalyshok(sim)
-if int(balance) > 100:
+try:
+    balance = zalyshok(sim)
+except BaseException:
+    balance = -1
+if balance < 0:
+    mess = 'UNKNOWN - balance minutes on ALL'
+    print mess
+    sys.exit(3)
+elif int(balance) > 100:
     mess = 'OK - balance ' + balance + ' minutes on ALL'
     print mess
     sys.exit(0)
@@ -35,8 +42,4 @@ elif int(balance) < 30:
     mess = 'CRITICAL - balance ' + balance + ' minutes on ALL'
     print mess
     sys.exit(2)
-else:
-    mess = 'UNKNOWN - balance ' + balance + ' minutes on ALL'
-    print mess
-    sys.exit(3)
 
