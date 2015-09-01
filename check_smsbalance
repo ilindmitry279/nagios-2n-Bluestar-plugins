@@ -42,6 +42,3 @@ elif int(balance) < 11:
     mess = 'CRITICAL - balance ' + balance + ' sms'
     print mess
     sys.exit(2)
-    mess = 'UNKNOWN - balance ' + balance + ' sms'
-    print mess
-    sys.exit(3)
