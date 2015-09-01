@@ -22,8 +22,15 @@ def zalyshok(sim):
     return zal
 
 sim = sys.argv[1]
-balance = zalyshok(sim)
-if int(balance) > 15:
+try:
+    balance = zalyshok(sim)
+except BaseException:
+    balance = -1
+if balance < 0:
+    mess = 'UNKNOWN - balance minutes on INTERNATIONAL'
+    print mess
+    sys.exit(3)
+elif int(balance) > 15:
     mess = 'OK - balance ' + balance + ' minutes on INTERNATIONAL'
     print mess
     sys.exit(0)
